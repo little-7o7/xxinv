@@ -17,3 +17,30 @@ body{background:#12223c;color:#f5e9d5}main{--bg:#12223c;--panel:#1c304c;--ink:#f
 html{scrollbar-width:thin;scrollbar-color:#b79561 #12223c}::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:#12223c}::-webkit-scrollbar-thumb{background:#b79561;border-radius:10px}::-webkit-scrollbar-thumb:hover{background:#e4be7d}::-webkit-scrollbar-corner{background:transparent}
 
 .extended-letter{max-width:600px;margin:24px auto 0}.extended-letter p{font-size:14px;line-height:2;color:var(--muted);margin:0 0 20px}.guest-dedication{text-align:center;border-top:1px solid var(--line)}.guest-dedication h2,.guest-faq h2{max-width:650px;margin:25px auto 35px}.dedication-name{color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:27px;margin:0 0 28px}.dedication-prose{max-width:640px;margin:auto;text-align:left}.dedication-prose p{font-size:14px;line-height:2;color:var(--muted);margin:0 0 23px}.guest-dedication blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(29px,3vw,43px);line-height:1.3;font-style:italic;color:var(--gold);max-width:650px;margin:50px auto;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:35px 15px}.guest-wishes{max-width:630px;margin:auto}.guest-wishes>span{font-size:38px;color:var(--gold)}.guest-wishes h3{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:34px;margin:20px 0}.guest-wishes>p:not(.signature){font-size:14px;line-height:2;color:var(--muted)}.guest-faq{padding-top:35px;text-align:center}.faq-list{max-width:760px;margin:auto;text-align:left}.faq-list details{border-bottom:1px solid var(--line)}.faq-list summary{cursor:pointer;display:flex;gap:20px;align-items:center;font-size:15px;padding:25px 0;list-style:none;line-height:1.5}.faq-list summary::-webkit-details-marker{display:none}.faq-list summary>span{font-size:10px;color:var(--gold);flex:0 0 22px}.faq-list summary>i{margin-left:auto;font-size:23px;font-style:normal;color:var(--gold);transition:transform .2s}.faq-list details[open] summary>i{transform:rotate(45deg)}.faq-list details>p{margin:0;padding:0 30px 25px 42px;font-size:13px;color:var(--muted);line-height:1.9}.guest-farewell{font-family:'Cormorant Garamond',serif;font-size:28px;font-style:italic;color:var(--gold);margin:45px auto 0;max-width:580px}@media(max-width:650px){.extended-letter p,.dedication-prose p,.guest-wishes>p:not(.signature){font-size:13px;line-height:1.95}.guest-dedication h2,.guest-faq h2{font-size:38px}.guest-dedication blockquote{padding:28px 0;margin:35px auto}.faq-list summary{gap:12px;font-size:14px;padding:22px 0}.faq-list details>p{padding-left:34px;padding-right:0}.guest-farewell{font-size:25px}}
+
+/* Parliament blue stationery, softly lifted from the printed reference. */
+body{background:#244d73}
+main{--bg:#244d73;--panel:#2b5377;--ink:#f6edda;--gold:#d8bb7d;--muted:#d6dfE7;--line:#d8bb7d55;--glow-one:#3d739e;--glow-two:#204868}
+.sapphire{background:#244d73}
+main[data-theme=sapphire] .sky-glow{opacity:.16}
+main[data-theme] .hero{background:radial-gradient(ellipse at 50% 43%,color-mix(in srgb,var(--bg) 70%,transparent),transparent 75%)}
+.hero{margin:18px 24px 24px;padding-top:62px;min-height:780px}
+.ornamental-frame{position:absolute!important;inset:0;pointer-events:none;border:1px solid var(--line);z-index:0;color:var(--gold)}
+.ornamental-frame:before{content:'';position:absolute;inset:8px;border:1px solid var(--line);opacity:.65}
+.ornamental-corner{position:absolute;width:125px;height:125px;stroke:currentColor;stroke-width:.9;opacity:.8}
+.corner-0{top:-1px;left:-1px}.corner-1{top:-1px;right:-1px;transform:rotate(90deg)}.corner-2{bottom:-1px;right:-1px;transform:rotate(180deg)}.corner-3{bottom:-1px;left:-1px;transform:rotate(270deg)}
+.hero .side-caption{right:24px}
+.anniversary{width:320px;height:320px;margin:18px 0 12px}
+.jubilee-seal{position:absolute;inset:0;width:100%;height:100%;fill:color-mix(in srgb,var(--bg) 75%,transparent);stroke:var(--gold);stroke-width:1;filter:drop-shadow(0 8px 24px #0c284333)}
+.jubilee-seal path{paint-order:stroke fill;stroke-width:5;stroke:color-mix(in srgb,var(--gold) 60%,transparent)}
+.sixty{font-size:230px;letter-spacing:-16px;padding-right:16px;margin-top:-24px;background-image:linear-gradient(125deg,#bd9653 4%,#f6e5b4 40%,var(--gold) 70%,#ba934e)}
+.years{right:auto;bottom:47px;font-size:29px}
+.letter{position:relative;margin:0 24px;padding:95px 45px;background:color-mix(in srgb,var(--panel) 86%,transparent)}
+.letter .ornamental-corner{width:95px;height:95px;opacity:.55}
+.letter> :not(.ornamental-frame){position:relative}
+.signature:before{content:'✧';display:block;color:var(--gold);font-size:23px;margin:24px auto 14px}
+.portrait-frame{border-radius:5px;padding:10px;border-color:var(--gold)}
+.portrait-frame>img,.portrait-empty{border-radius:2px}
+.portrait-empty{border-color:var(--line)}
+html{scrollbar-color:#b99c65 #244d73}::-webkit-scrollbar-track{background:#244d73}
+@media(max-width:650px){.hero{margin:12px 14px 18px;padding:48px 20px 32px;min-height:715px}.ornamental-corner{width:80px;height:80px}.hero h1{font-size:55px}.hero .side-caption{display:none}.anniversary{width:300px;height:300px;transform:scale(.9);margin:4px 0 0}.sixty{font-size:215px}.years{bottom:43px}.tagline{font-size:24px;text-align:center}.letter{margin:0 14px;padding:75px 22px}.letter .ornamental-corner{width:60px;height:60px}.letter h2{font-size:37px}.hero-date{gap:16px}.hero .scroll{margin-top:30px}}
