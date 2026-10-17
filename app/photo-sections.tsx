@@ -1,19 +1,18 @@
 import Image from 'next/image';
 import { Camera, Building2, ArrowUpRight } from 'lucide-react';
-import { celebrants, type Celebrant, type Language } from '../lib/invitations';
+import { type Celebrant, type Language } from '../lib/invitations';
 import { restaurant } from '../lib/restaurant';
 
 export default function PhotoSections({language, celebrant}:{language:Language;celebrant:Celebrant}) {
   const ru = language === 'ru';
-  const other = celebrants[celebrant.id === 'shavkat' ? 'shuhrat' : 'shavkat'];
-  const brother = {...other, name:ru ? other.nameRu : (other.id === 'shuhrat' ? 'Шуҳрат' : 'Шавкат')};
+  const person = celebrant;
   return <>
     <section id="portraits" className="portraits-section section-shell" data-reveal>
-      <div className="section-heading"><p className="eyebrow">{ru ? 'ДВА БРАТА · ОДИН ОСОБЕННЫЙ ДЕНЬ' : 'ДУ БАРОДАР · ЯК РӮЗИ ФАРОМӮШНАШАВАНДА'}</p><h2>{ru ? 'Две судьбы. Одна история.' : 'Ду сарнавишт. Як достон.'}</h2><p>{ru ? 'В этот вечер мы вместе отмечаем наше 60-летие.' : 'Дар ин шом мо 60-солагии худро якҷоя ҷашн мегирем.'}</p></div>
-      <div className="portrait-pair">{[celebrant,brother].map((person,index)=><figure className={`person-card person-${index}`} key={person.id}>
-        <div className="portrait-frame">{person.photo ? <Image src={person.photo} alt={person.name} width={800} height={1000} sizes="(max-width: 650px) 85vw, 40vw"/> : <div className="portrait-empty"><span className="portrait-monogram" aria-hidden="true">{person.name.charAt(0)}</span><Camera size={22} strokeWidth={1}/><p>{ru ? `Фотография ${person.name}` : `Акси ${person.name}`}</p><span>{ru ? 'Скоро здесь появится портрет' : 'Ба зудӣ дар ин ҷо акс пайдо мешавад'}</span></div>}</div>
-        <figcaption><span>0{index+1}</span><h3>{person.name}</h3><span>60 {ru?'лет':'сол'}</span></figcaption>
-      </figure>)}</div>
+      <div className="section-heading"><p className="eyebrow">{ru ? 'С ТЕПЛОМ ПРИГЛАШАЮ ВАС' : 'ШУМОРО АЗ ТАҲТИ ДИЛ ДАЪВАТ МЕКУНАМ'}</p><h2>{person.name}</h2><p>{ru ? 'Буду счастлив разделить с вами мой 60-летний юбилей.' : 'Аз он шод мешавам, ки ҷашни 60-солагиамро бо шумо мегузаронам.'}</p></div>
+      <div className="portrait-single"><figure className="person-card">
+        <div className="portrait-frame">{person.photo ? <Image src={person.photo} alt={person.name} width={800} height={1000} sizes="(max-width: 650px) 85vw, 440px"/> : <div className="portrait-empty"><span className="portrait-monogram" aria-hidden="true">{person.name.charAt(0)}</span><Camera size={22} strokeWidth={1}/><p>{ru ? `Фотография: ${person.name}` : `Акси ${person.name}`}</p><span>{ru ? 'Скоро здесь появится портрет' : 'Ба зудӣ дар ин ҷо акс пайдо мешавад'}</span></div>}</div>
+        <figcaption><h3>{person.name}</h3><span>60 {ru?'лет':'сол'}</span></figcaption>
+      </figure></div>
       <p className="portrait-footnote">{ru ? 'Самое ценное — быть рядом.' : 'Аз ҳама арзишманд — дар канори ҳам будан.'}</p>
     </section>
     <div className="celebration-divider" aria-hidden="true"><span>04</span><i>✧</i><span>11</span></div>
