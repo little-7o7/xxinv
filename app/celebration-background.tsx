@@ -4,57 +4,88 @@ import { useEffect, useRef, useState } from 'react';
 import { Sparkles } from 'lucide-react';
 import type { Language, Theme } from '../lib/invitations';
 
-type Spark = {x:number;y:number;vx:number;vy:number;life:number;max:number;color:string;size:number};
+type Point={x:number;y:number};
+type Spark=Point&{vx:number;vy:number;life:number;max:number;color:string;size:number;trail:Point[];twinkle:number};
+type Rocket=Point&{sx:number;sy:number;tx:number;ty:number;age:number;duration:number;trail:Point[]};
+
 export default function CelebrationBackground({theme,language}:{theme:Theme;language:Language}) {
-  const canvas = useRef<HTMLCanvasElement>(null);
-  const [paused,setPaused] = useState(false);
-  useEffect(() => {
+  const canvas=useRef<HTMLCanvasElement>(null);
+  const [paused,setPaused]=useState(false);
+  useEffect(()=>{
     const surface=canvas.current;
     const context=surface?.getContext('2d');
     if(!surface||!context)return;
     const ctx=context;
     const media=window.matchMedia('(prefers-reduced-motion: reduce)');
-    let width=0,height=0,frame=0,last=0,elapsed=0,nextBurst=.1;
-    let sparks:Spark[]=[];
-    const palette=theme==='rose'?['244,192,134','225,144,157','255,221,184']:theme==='jade'?['225,198,133','145,219,186','239,222,176']:['230,197,132','147,190,240','224,164,186'];
-    const stars=Array.from({length:180},()=>({x:Math.random(),y:Math.random(),size:Math.random()*1.3+.4,phase:Math.random()*6}));
+    let width=0,height=0,frame=0,last=0,elapsed=0,nextLaunch=.1;
+    let sparks:Spark[]=[],rockets:Rocket[]=[];
+    const palette=theme==='rose'?['255,211,145','255,160,170','255,232,191']:theme==='jade'?['255,217,144','163,255,207','255,237,193']:['255,217,144','159,211,255','255,182,199'];
+    const stars=Array.from({length:180},()=>({x:Math.random(),y:Math.random(),size:Math.random()*1.2+.4,phase:Math.random()*6}));
     const resize=()=>{
       width=window.innerWidth;height=window.innerHeight;
       const ratio=Math.min(window.devicePixelRatio||1,1.5);
       surface.width=Math.round(width*ratio);surface.height=Math.round(height*ratio);
       ctx.setTransform(ratio,0,0,ratio,0,0);
     };
-    function burst(){
-      const side=Math.random()>.5;
-      const x=width*(side?.79+Math.random()*.13:.08+Math.random()*.13);
-      const y=height*(.13+Math.random()*.43);
-      const count=width<650?38:64;
+    function burst(x:number,y:number){
+      const count=width<650?48:80;
       const color=palette[Math.floor(Math.random()*palette.length)];
-      const radius=Math.min(width*.21,155);
+      const radius=Math.min(width*.24,200);
+      const willow=Math.random()<.35;
       for(let i=0;i<count;i++){
-        const angle=Math.PI*2*i/count;
-        const velocity=radius*(.58+Math.random()*.48);
-        const life=1.8+Math.random()*.9;
-        sparks.push({x,y,vx:Math.cos(angle)*velocity,vy:Math.sin(angle)*velocity,life,max:life,color,size:.7+Math.random()*.9});
+        const angle=Math.PI*2*i/count+(Math.random()-.5)*.05;
+        const velocity=radius*(.38+Math.random()*.62);
+        const life=(willow?3.7:2.9)+Math.random()*1.1;
+        sparks.push({x,y,vx:Math.cos(angle)*velocity,vy:Math.sin(angle)*velocity*(willow?.8:1),life,max:life,color:i%7===0?'255,244,210':color,size:.9+Math.random()*1.2,trail:[],twinkle:Math.random()*10});
+      }
+    }
+    function launch(){
+      const tx=width*(Math.random()>.5?.76+Math.random()*.17:.07+Math.random()*.17);
+      const ty=height*(.12+Math.random()*.4);
+      const sx=tx+(Math.random()-.5)*width*.14;
+      rockets.push({x:sx,y:height+15,sx,sy:height+15,tx,ty,age:0,duration:1.1+Math.random()*.5,trail:[]});
+    }
+    function trail(points:Point[],color:string,alpha:number,size:number){
+      for(let i=1;i<points.length;i++){
+        ctx.strokeStyle=`rgba(${color},${alpha*i/points.length})`;ctx.lineWidth=size*i/points.length;
+        ctx.beginPath();ctx.moveTo(points[i-1].x,points[i-1].y);ctx.lineTo(points[i].x,points[i].y);ctx.stroke();
       }
     }
     function paint(time:number){
-      const dt=Math.min((time-last)/1000||0,.04);last=time;elapsed+=dt;
+      if(last&&time-last<32){frame=requestAnimationFrame(paint);return;}
+      // Slightly slower than real time: linger on the bloom and falling embers.
+      const dt=Math.min(last?(time-last)/1000:.016,.06)*.76;last=time;elapsed+=dt;
       ctx.clearRect(0,0,width,height);
+      ctx.globalCompositeOperation='source-over';
       for(const star of stars){
-        const alpha=.12+(Math.sin(elapsed*.7+star.phase)+1)*.13;
-        ctx.fillStyle=`rgba(244,220,168,${alpha})`;ctx.beginPath();
-        ctx.arc(star.x*width,star.y*height,star.size,0,Math.PI*2);ctx.fill();
+        const alpha=.18+(Math.sin(elapsed*.5+star.phase)+1)*.15;
+        ctx.fillStyle=`rgba(255,232,186,${alpha})`;ctx.beginPath();ctx.arc(star.x*width,star.y*height,star.size,0,Math.PI*2);ctx.fill();
       }
       if(!paused&&!media.matches){
-        if(elapsed>=nextBurst){burst();nextBurst=elapsed+(1.5+Math.random()*.7)/4;}
+        ctx.globalCompositeOperation='lighter';
+        if(elapsed>=nextLaunch){launch();nextLaunch=elapsed+(1.5+Math.random()*.7)/4;}
+        for(const r of rockets){
+          r.age+=dt;const p=Math.min(1,r.age/r.duration);const ease=1-Math.pow(1-p,1.6);
+          r.x=r.sx+(r.tx-r.sx)*p;r.y=r.sy+(r.ty-r.sy)*ease;
+          r.trail.push({x:r.x,y:r.y});if(r.trail.length>14)r.trail.shift();
+          trail(r.trail,'255,198,112',.8,2);
+          ctx.fillStyle='rgba(255,243,201,.95)';ctx.beginPath();ctx.arc(r.x,r.y,1.8,0,Math.PI*2);ctx.fill();
+          if(p===1)burst(r.tx,r.ty);
+        }
+        rockets=rockets.filter(r=>r.age<r.duration);
         sparks=sparks.filter(s=>s.life>0);
         for(const s of sparks){
-          const px=s.x,py=s.y;s.life-=dt;s.vx*=Math.exp(-dt*.7);s.vy=s.vy*Math.exp(-dt*.7)+dt*18;s.x+=s.vx*dt;s.y+=s.vy*dt;
-          const alpha=Math.max(0,Math.min(1,(s.max-s.life)*4))*Math.max(0,s.life/s.max)*.8;
-          ctx.strokeStyle=`rgba(${s.color},${alpha*.5})`;ctx.lineWidth=s.size*.65;ctx.beginPath();ctx.moveTo(px-s.vx*.045,py-s.vy*.045);ctx.lineTo(s.x,s.y);ctx.stroke();
-          ctx.fillStyle=`rgba(${s.color},${alpha})`;ctx.beginPath();ctx.arc(s.x,s.y,s.size,0,Math.PI*2);ctx.fill();
+          s.life-=dt;s.vx*=Math.exp(-dt*.58);s.vy=s.vy*Math.exp(-dt*.58)+dt*29;s.x+=s.vx*dt;s.y+=s.vy*dt;
+          s.trail.push({x:s.x,y:s.y});if(s.trail.length>9)s.trail.shift();
+          const age=s.max-s.life;
+          const fade=Math.min(1,s.life/1.2);
+          const shimmer=s.life<1.4?.55+Math.sin(age*18+s.twinkle)*.35:1;
+          const alpha=Math.max(0,Math.min(1,age*8))*Math.max(0,fade)*shimmer;
+          trail(s.trail,s.color,alpha*.55,s.size);
+          if(s.size>1.85){ctx.shadowColor=`rgba(${s.color},.7)`;ctx.shadowBlur=7;}
+          ctx.fillStyle=`rgba(${s.color},${alpha})`;ctx.beginPath();ctx.arc(s.x,s.y,s.size,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
         }
+        ctx.globalCompositeOperation='source-over';
         frame=requestAnimationFrame(paint);
       }
     }
