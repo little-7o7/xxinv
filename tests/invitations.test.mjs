@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {parseInvitation, invitationPath, celebrants} from '../lib/invitations.ts';
+import {parseInvitation, invitationPath, invitationRedirect, celebrants} from '../lib/invitations.ts';
 
 test('each celebrant has an independent invitation in either language', () => {
   for (const language of ['ru', 'uz']) {
@@ -13,7 +13,7 @@ test('each celebrant has an independent invitation in either language', () => {
   }
 });
 test('invalid routes are rejected instead of showing the wrong person', () => {
-  for (const segments of [['ru','unknown','amir'], ['en','xasan','amir'], ['ru','xasan'], ['ru','xasan','___'], ['ru','xasan','amir','extra'], ['ru','constructor','amir']]) {
+  for (const segments of [['ru','unknown','amir'], ['en','xasan','amir'], ['ru','xasan','___'], ['ru','xasan','amir','extra'], ['ru','constructor','amir']]) {
     assert.equal(parseInvitation(segments), null);
   }
 });
@@ -26,4 +26,22 @@ test('photos and default themes are independently configurable', () => {
   assert.notEqual(celebrants.xasan, celebrants.xusan);
   assert.equal(celebrants.xasan.name, 'Xasan');
   assert.equal(celebrants.xusan.name, 'Xusan');
+});
+
+test('unnamed guests stay absent from links and render as general invitations', () => {
+  for (const language of ['ru','uz']) {
+    for (const id of ['xasan','xusan']) {
+      assert.equal(parseInvitation([language,id]).guest, '');
+      assert.equal(invitationPath(language,id), `/${language}/${id}`);
+      assert.equal(invitationPath(language,id,'  '), `/${language}/${id}`);
+      assert.equal(invitationRedirect([language,id]), null);
+    }
+  }
+});
+test('short URLs default to Russian without inventing a guest', () => {
+  assert.equal(invitationRedirect(['xasan']), '/ru/xasan');
+  assert.equal(invitationRedirect(['xusan']), '/ru/xusan');
+  assert.equal(invitationRedirect(['xusan','amir_aka']), '/ru/xusan/amir_aka');
+  assert.equal(invitationRedirect(['ru','amir']), '/ru/xasan/amir');
+  assert.equal(invitationRedirect(['unknown']), null);
 });

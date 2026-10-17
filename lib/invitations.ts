@@ -19,17 +19,28 @@ export function guestDisplayName(slug: string): string {
     .map(word => word.charAt(0).toLocaleUpperCase() + word.slice(1)).join(' ');
 }
 
-export function invitationPath(language: Language, celebrant: CelebrantId, guest: string): string {
+export function invitationPath(language: Language, celebrant: CelebrantId, guest: string = ''): string {
   const slug = guest.trim().replace(/[\s_-]+/g, '_').toLocaleLowerCase();
-  return `/${language}/${celebrant}/${encodeURIComponent(slug)}`;
+  return `/${language}/${celebrant}${slug ? `/${encodeURIComponent(slug)}` : ''}`;
 }
 
 export function parseInvitation(segments: string[]): { language: Language; celebrant: Celebrant; guest: string } | null {
-  if (segments.length !== 3) return null;
+  if (segments.length !== 2 && segments.length !== 3) return null;
   const [language, id, slug] = segments;
   if (language !== 'ru' && language !== 'uz') return null;
   if (id !== 'xasan' && id !== 'xusan') return null;
-  const guest = guestDisplayName(slug);
-  if (!guest) return null;
+  const guest = slug === undefined ? '' : guestDisplayName(slug);
+  if (slug !== undefined && !guest) return null;
   return { language, celebrant: celebrants[id], guest };
+}
+
+export function invitationRedirect(segments: string[]): string | null {
+  const [first, second] = segments;
+  if ((first === 'xasan' || first === 'xusan') && (segments.length === 1 || segments.length === 2)) {
+    return invitationPath('ru', first, second);
+  }
+  if (segments.length === 2 && (first === 'ru' || first === 'uz') && second !== 'xasan' && second !== 'xusan') {
+    return invitationPath(first, 'xasan', second);
+  }
+  return null;
 }
