@@ -1,6 +1,6 @@
 export type Language = 'ru' | 'uz';
 export type CelebrantId = 'xasan' | 'xusan';
-export type Theme = 'sand' | 'blue' | 'sage';
+export type Theme = 'sapphire' | 'rose' | 'jade';
 export type Celebrant = {
   id: CelebrantId;
   name: string;
@@ -10,8 +10,8 @@ export type Celebrant = {
 
 // Set photo to a public path, e.g. '/photos/xasan.jpg', when photos are ready.
 export const celebrants: Record<CelebrantId, Celebrant> = {
-  xasan: { id: 'xasan', name: 'Xasan', photo: null, theme: 'sand' },
-  xusan: { id: 'xusan', name: 'Xusan', photo: null, theme: 'sand' },
+  xasan: { id: 'xasan', name: 'Xasan', photo: null, theme: 'sapphire' },
+  xusan: { id: 'xusan', name: 'Xusan', photo: null, theme: 'sapphire' },
 };
 
 export function guestDisplayName(slug: string): string {
