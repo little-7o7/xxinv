@@ -1,17 +1,18 @@
 export type Language = 'ru' | 'uz';
-export type CelebrantId = 'xasan' | 'xusan';
+export type CelebrantId = 'shavkat' | 'shuhrat';
 export type Theme = 'sapphire' | 'rose' | 'jade';
 export type Celebrant = {
   id: CelebrantId;
   name: string;
+  nameRu: string;
   photo: string | null;
   theme: Theme;
 };
 
-// Set photo to a public path, e.g. '/photos/xasan.jpg', when photos are ready.
+// Set photo to a public path, e.g. '/photos/shavkat.jpg', when photos are ready.
 export const celebrants: Record<CelebrantId, Celebrant> = {
-  xasan: { id: 'xasan', name: 'Xasan', photo: null, theme: 'sapphire' },
-  xusan: { id: 'xusan', name: 'Xusan', photo: null, theme: 'sapphire' },
+  shavkat: { id: 'shavkat', name: 'Shavkat', nameRu: 'Шавкат', photo: null, theme: 'sapphire' },
+  shuhrat: { id: 'shuhrat', name: 'Shuhrat', nameRu: 'Шухрат', photo: null, theme: 'sapphire' },
 };
 
 export function guestDisplayName(slug: string): string {
@@ -28,19 +29,26 @@ export function parseInvitation(segments: string[]): { language: Language; celeb
   if (segments.length !== 2 && segments.length !== 3) return null;
   const [language, id, slug] = segments;
   if (language !== 'ru' && language !== 'uz') return null;
-  if (id !== 'xasan' && id !== 'xusan') return null;
+  if (id !== 'shavkat' && id !== 'shuhrat') return null;
   const guest = slug === undefined ? '' : guestDisplayName(slug);
   if (slug !== undefined && !guest) return null;
-  return { language, celebrant: celebrants[id], guest };
+  return { language, celebrant: { ...celebrants[id], name: language === 'ru' ? celebrants[id].nameRu : celebrants[id].name }, guest };
 }
 
 export function invitationRedirect(segments: string[]): string | null {
-  const [first, second] = segments;
-  if ((first === 'xasan' || first === 'xusan') && (segments.length === 1 || segments.length === 2)) {
+  const [first, second, guest] = segments;
+  const alias = (id: string): CelebrantId | null => id === 'xasan' ? 'shavkat' : id === 'xusan' ? 'shuhrat' : null;
+  const shortAlias = alias(first);
+  if (shortAlias && (segments.length === 1 || segments.length === 2)) return invitationPath('ru', shortAlias, second);
+  if ((first === 'ru' || first === 'uz') && (segments.length === 2 || segments.length === 3)) {
+    const oldId = alias(second);
+    if (oldId) return invitationPath(first, oldId, guest);
+  }
+  if ((first === 'shavkat' || first === 'shuhrat') && (segments.length === 1 || segments.length === 2)) {
     return invitationPath('ru', first, second);
   }
-  if (segments.length === 2 && (first === 'ru' || first === 'uz') && second !== 'xasan' && second !== 'xusan') {
-    return invitationPath(first, 'xasan', second);
+  if (segments.length === 2 && (first === 'ru' || first === 'uz') && second !== 'shavkat' && second !== 'shuhrat') {
+    return invitationPath(first, 'shavkat', second);
   }
   return null;
 }

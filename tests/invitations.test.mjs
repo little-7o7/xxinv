@@ -4,7 +4,7 @@ import {parseInvitation, invitationPath, invitationRedirect, celebrants} from '.
 
 test('each celebrant has an independent invitation in either language', () => {
   for (const language of ['ru', 'uz']) {
-    for (const id of ['xasan', 'xusan']) {
+    for (const id of ['shavkat', 'shuhrat']) {
       const result = parseInvitation([language, id, 'amir_aka']);
       assert.equal(result.language, language);
       assert.equal(result.celebrant.id, id);
@@ -13,24 +13,24 @@ test('each celebrant has an independent invitation in either language', () => {
   }
 });
 test('invalid routes are rejected instead of showing the wrong person', () => {
-  for (const segments of [['ru','unknown','amir'], ['en','xasan','amir'], ['ru','xasan','___'], ['ru','xasan','amir','extra'], ['ru','constructor','amir']]) {
+  for (const segments of [['ru','unknown','amir'], ['en','shavkat','amir'], ['ru','shavkat','___'], ['ru','shavkat','amir','extra'], ['ru','constructor','amir']]) {
     assert.equal(parseInvitation(segments), null);
   }
 });
 test('generated links retain language, celebrant, spaces and Unicode names safely', () => {
-  assert.equal(invitationPath('uz','xusan','  Amir  Aka '), '/uz/xusan/amir_aka');
-  assert.equal(invitationPath('ru','xasan','Али Ака'), '/ru/xasan/%D0%B0%D0%BB%D0%B8_%D0%B0%D0%BA%D0%B0');
-  assert.equal(invitationPath('ru','xasan','A/B? C'), '/ru/xasan/a%2Fb%3F_c');
+  assert.equal(invitationPath('uz','shuhrat','  Amir  Aka '), '/uz/shuhrat/amir_aka');
+  assert.equal(invitationPath('ru','shavkat','Али Ака'), '/ru/shavkat/%D0%B0%D0%BB%D0%B8_%D0%B0%D0%BA%D0%B0');
+  assert.equal(invitationPath('ru','shavkat','A/B? C'), '/ru/shavkat/a%2Fb%3F_c');
 });
 test('photos and default themes are independently configurable', () => {
-  assert.notEqual(celebrants.xasan, celebrants.xusan);
-  assert.equal(celebrants.xasan.name, 'Xasan');
-  assert.equal(celebrants.xusan.name, 'Xusan');
+  assert.notEqual(celebrants.shavkat, celebrants.shuhrat);
+  assert.equal(celebrants.shavkat.name, 'Shavkat');
+  assert.equal(celebrants.shuhrat.name, 'Shuhrat');
 });
 
 test('unnamed guests stay absent from links and render as general invitations', () => {
   for (const language of ['ru','uz']) {
-    for (const id of ['xasan','xusan']) {
+    for (const id of ['shavkat','shuhrat']) {
       assert.equal(parseInvitation([language,id]).guest, '');
       assert.equal(invitationPath(language,id), `/${language}/${id}`);
       assert.equal(invitationPath(language,id,'  '), `/${language}/${id}`);
@@ -39,9 +39,19 @@ test('unnamed guests stay absent from links and render as general invitations', 
   }
 });
 test('short URLs default to Russian without inventing a guest', () => {
-  assert.equal(invitationRedirect(['xasan']), '/ru/xasan');
-  assert.equal(invitationRedirect(['xusan']), '/ru/xusan');
-  assert.equal(invitationRedirect(['xusan','amir_aka']), '/ru/xusan/amir_aka');
-  assert.equal(invitationRedirect(['ru','amir']), '/ru/xasan/amir');
+  assert.equal(invitationRedirect(['shavkat']), '/ru/shavkat');
+  assert.equal(invitationRedirect(['shuhrat']), '/ru/shuhrat');
+  assert.equal(invitationRedirect(['shuhrat','amir_aka']), '/ru/shuhrat/amir_aka');
+  assert.equal(invitationRedirect(['ru','amir']), '/ru/shavkat/amir');
   assert.equal(invitationRedirect(['unknown']), null);
+});
+
+test('old links redirect to the renamed celebrants without losing guests', () => {
+  assert.equal(invitationRedirect(['xasan']), '/ru/shavkat');
+  assert.equal(invitationRedirect(['xusan']), '/ru/shuhrat');
+  assert.equal(invitationRedirect(['ru','xasan','amir_aka']), '/ru/shavkat/amir_aka');
+  assert.equal(invitationRedirect(['uz','xusan','amir_aka']), '/uz/shuhrat/amir_aka');
+  assert.equal(parseInvitation(['ru','shavkat']).celebrant.name, 'Шавкат');
+  assert.equal(parseInvitation(['ru','shuhrat']).celebrant.name, 'Шухрат');
+  assert.equal(parseInvitation(['uz','shuhrat']).celebrant.name, 'Shuhrat');
 });

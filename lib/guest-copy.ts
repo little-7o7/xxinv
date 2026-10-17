@@ -19,7 +19,7 @@ export const guestCopy = {
     faqEyebrow: 'ЧТО ПОЛЕЗНО ЗНАТЬ ЗАРАНЕЕ',
     faqTitle: 'Чтобы встреча была приятной',
     questions: [
-      {q:'Когда состоится юбилей?',a:'Ждём вас 4 ноября. Xasan и Xusan отмечают своё 60-летие в один день, на общем празднике в кругу родных и друзей.'},
+      {q:'Когда состоится юбилей?',a:'Ждём вас 4 ноября. Шавкат и Шухрат отмечают своё 60-летие в один день, на общем празднике в кругу родных и друзей.'},
       {q:'Во сколько начинается вечер?',a:'Точное время начала сообщим дополнительно. Перед поездкой, пожалуйста, уточните его у юбиляра, чтобы спокойно спланировать дорогу.'},
       {q:'Где мы встречаемся?',a:'В ресторане «Самарканд», в Самарканде. Точный адрес и ориентир ещё уточняются. Кнопка карты пока открывает поиск ресторана — перед поездкой проверьте место встречи с юбиляром.'},
       {q:'Как сообщить, что я приду?',a:'Пожалуйста, позвоните или напишите юбиляру лично и скажите, сможете ли вы присоединиться. Если планы изменятся, тоже предупредите: это поможет нам подготовить встречу для каждого гостя.'},
@@ -48,7 +48,7 @@ export const guestCopy = {
     faqEyebrow: 'OLDINDAN BILISH FOYDALI',
     faqTitle: 'Uchrashuvimiz yoqimli o‘tsin',
     questions: [
-      {q:'Yubiley qachon bo‘ladi?',a:'Sizni 4 noyabr kuni kutamiz. Xasan va Xusan 60 yoshini bir kunda, oila va do‘stlar davrasidagi umumiy bayramda nishonlaydi.'},
+      {q:'Yubiley qachon bo‘ladi?',a:'Sizni 4 noyabr kuni kutamiz. Shavkat va Shuhrat 60 yoshini bir kunda, oila va do‘stlar davrasidagi umumiy bayramda nishonlaydi.'},
       {q:'Oqshom soat nechada boshlanadi?',a:'Aniq boshlanish vaqti qo‘shimcha e’lon qilinadi. Yo‘lga chiqishdan avval vaqtni yubilyardan aniqlashtirib, safaringizni xotirjam rejalashtiring.'},
       {q:'Qayerda uchrashamiz?',a:'Samarqand shahridagi «Samarkand» restoranida. Aniq manzil va mo‘ljal hali aniqlashtirilmoqda. Xarita tugmasi hozircha restoran qidiruvini ochadi. Yo‘lga chiqishdan oldin uchrashuv joyini yubilyar bilan tekshiring.'},
       {q:'Kelishimni qanday xabar qilaman?',a:'Iltimos, yubilyarga shaxsan qo‘ng‘iroq qiling yoki yozing va qatnasha olishingizni bildiring. Rejalaringiz o‘zgarsa ham xabar bering: bu har bir mehmon uchun tayyorgarlik ko‘rishimizga yordam beradi.'},
