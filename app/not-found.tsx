@@ -1,0 +1,1 @@
+export default function NotFound(){return <main className="notfound"><p className="eyebrow">XASAN & XUSAN</p><h1>Страница не найдена</h1><a className="button gold" href="/">Открыть приглашение ↗</a></main>}

@@ -1,0 +1,5 @@
+.openai
+.git
+.next
+node_modules
+tests
