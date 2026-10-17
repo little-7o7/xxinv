@@ -9,8 +9,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!parsed) return { title: 'Приглашение не найдено' };
   const { language, celebrant, guest } = parsed;
   return {
-    title: language === 'ru' ? `${guest ? `${guest}, ` : ''}приглашение от ${celebrant.name} · 60 лет` : `${guest ? `${guest}, ` : ''}${celebrant.name}dan taklifnoma · 60 yosh`,
-    description: language === 'ru' ? '4 ноября · Ресторан «Самарканд», Самарканд.' : '4 noyabr · «Samarkand» restorani, Samarqand.',
+    title: language === 'ru' ? `${guest ? `${guest}, ` : ''}приглашение от ${celebrant.name} · 60 лет` : `${guest ? `${guest}, ` : ''}даъватнома аз ${celebrant.name} · 60 сол`,
+    description: language === 'ru' ? '4 ноября · Ресторан «Самарканд», Самарканд.' : '4 ноябр · Тарабхонаи «Самарқанд», Самарқанд.',
     robots: { index: false, follow: false },
   };
 }

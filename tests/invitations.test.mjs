@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {parseInvitation, invitationPath, invitationRedirect, celebrants} from '../lib/invitations.ts';
 
 test('each celebrant has an independent invitation in either language', () => {
-  for (const language of ['ru', 'uz']) {
+  for (const language of ['ru', 'tj']) {
     for (const id of ['shavkat', 'shuhrat']) {
       const result = parseInvitation([language, id, 'amir_aka']);
       assert.equal(result.language, language);
@@ -18,7 +18,7 @@ test('invalid routes are rejected instead of showing the wrong person', () => {
   }
 });
 test('generated links retain language, celebrant, spaces and Unicode names safely', () => {
-  assert.equal(invitationPath('uz','shuhrat','  Amir  Aka '), '/uz/shuhrat/amir_aka');
+  assert.equal(invitationPath('tj','shuhrat','  Amir  Aka '), '/tj/shuhrat/amir_aka');
   assert.equal(invitationPath('ru','shavkat','Али Ака'), '/ru/shavkat/%D0%B0%D0%BB%D0%B8_%D0%B0%D0%BA%D0%B0');
   assert.equal(invitationPath('ru','shavkat','A/B? C'), '/ru/shavkat/a%2Fb%3F_c');
 });
@@ -29,7 +29,7 @@ test('photos and default themes are independently configurable', () => {
 });
 
 test('unnamed guests stay absent from links and render as general invitations', () => {
-  for (const language of ['ru','uz']) {
+  for (const language of ['ru','tj']) {
     for (const id of ['shavkat','shuhrat']) {
       assert.equal(parseInvitation([language,id]).guest, '');
       assert.equal(invitationPath(language,id), `/${language}/${id}`);
@@ -50,8 +50,15 @@ test('old links redirect to the renamed celebrants without losing guests', () =>
   assert.equal(invitationRedirect(['xasan']), '/ru/shavkat');
   assert.equal(invitationRedirect(['xusan']), '/ru/shuhrat');
   assert.equal(invitationRedirect(['ru','xasan','amir_aka']), '/ru/shavkat/amir_aka');
-  assert.equal(invitationRedirect(['uz','xusan','amir_aka']), '/uz/shuhrat/amir_aka');
+  assert.equal(invitationRedirect(['tj','xusan','amir_aka']), '/tj/shuhrat/amir_aka');
   assert.equal(parseInvitation(['ru','shavkat']).celebrant.name, 'Шавкат');
   assert.equal(parseInvitation(['ru','shuhrat']).celebrant.name, 'Шухрат');
-  assert.equal(parseInvitation(['uz','shuhrat']).celebrant.name, 'Shuhrat');
+  assert.equal(parseInvitation(['tj','shuhrat']).celebrant.name, 'Шуҳрат');
+});
+
+test('old Uzbek links redirect to Tajik with the same guest', () => {
+  assert.equal(invitationRedirect(['uz','shuhrat','amir_aka']), '/tj/shuhrat/amir_aka');
+  assert.equal(invitationRedirect(['uz','xusan','amir_aka']), '/tj/shuhrat/amir_aka');
+  assert.equal(invitationRedirect(['uz','shavkat']), '/tj/shavkat');
+  assert.equal(parseInvitation(['uz','shavkat']), null);
 });

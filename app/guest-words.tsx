@@ -6,7 +6,7 @@ export default function GuestWords({language,guest,name}:{language:Language;gues
   return <>
     <section className="guest-dedication section-shell" data-reveal>
       <p className="eyebrow">{t.eyebrow}</p><h2>{t.title}</h2>
-      {guest && <p className="dedication-name">{guest}, {language==='ru'?'это приглашение — для вас.':'bu taklifnoma siz uchun.'}</p>}
+      {guest && <p className="dedication-name">{guest}, {language==='ru'?'это приглашение — для вас.':'ин даъватнома барои шумост.'}</p>}
       <div className="dedication-prose">{t.paragraphs.map(paragraph=><p key={paragraph}>{paragraph}</p>)}</div>
       <blockquote>{t.quote}</blockquote>
       <div className="guest-wishes"><span aria-hidden="true">✧</span><h3>{t.wishTitle}</h3><p>{t.wish}</p><p className="signature">{name}</p></div>

@@ -28,33 +28,51 @@ export const guestCopy = {
     ],
     farewell: 'До скорой встречи за праздничным столом. Вас ждут!',
   },
-  uz: {
-    letter: [
-      'Oltmish yil — katta hayot yo‘li. Ammo uning haqiqiy qadri yonimizdagi insonlar bilan o‘lchanadi. Shu sababli bu kunda men hurmat qiladigan, qadrlaydigan va doimo ko‘rishdan xursand bo‘ladigan insonlarni bir dasturxon atrofida jamlashni istayman. Siz ham qalbimga yaqin ana shunday insonlar qatoridasiz.',
-      'Sizning ishtirokingiz bayramimizga yanada iliqlik bag‘ishlaydi. Siz bilan ko‘rishish, shoshilmay suhbatlashish, samimiy tilaklarni eshitish va shunchaki birga bo‘lish men uchun quvonch. Bu oqshom kundalik tashvishlar o‘rnini diydor shodligi egallasin.',
-      'Egizagim bilan yubileyimizni birgalikda nishonlaymiz va sizni bu kunni biz bilan baham ko‘rishga chin dildan taklif qilamiz. Yaxshi kayfiyat bilan keling: bayramimizning eng muhim qismi — samimiy suhbat, tabassum va yaqin insonlar davrasi.',
-    ],
-    eyebrow: 'SIZGA ALOHIDA EHTIROM BILAN',
-    title: 'Siz bilan bu oqshom yanada fayzli',
-    dedication: 'Sizni quvonch bilan kutamiz',
-    paragraphs: [
-      'Shunday insonlar borki, ular bilan uchrashishning o‘zi quvonchli voqeaga aylanadi. Siz men uchun ana shunday insonsiz. Samimiyatingiz, e’tiboringiz va iliq munosabatingiz eng chin dildan aytilgan minnatdorlik so‘zlariga munosib.',
-      'Bu taklifnoma — katta hurmatimning kichik bir ifodasi. O‘zingizni chin dildan kutilayotgan aziz mehmon sifatida his qilishingizni istayman. Umid qilamanki, bu oqshom sizga yaxshi kayfiyat, yoqimli suhbatlar va iliq xotiralar hadya etadi.',
-      'Muhim uchrashuvlar uchun vaqt ajratishingizning o‘zi katta e’tibor. Kundalik ishlar orasida bir zum to‘xtab, yaqinlarni ko‘rish va quvonchni baham ko‘rish naqadar qadrli. Yubileyim kuni buni siz bilan birga amalga oshirishdan baxtiyor bo‘laman.',
-    ],
-    quote: 'Bayramning eng go‘zal bezagi — biz sevib kutadigan insonlar.',
-    wishTitle: 'Sizga ezgu tilaklarim',
-    wish: 'Xonadoningizda doimo tinchlik va farovonlik, yoningizda mehribon va ishonchli insonlar bo‘lsin. Oldinda sizni xushxabarlar va quvonchli voqealar kutsin. Sizga mustahkam sog‘liq, qalb xotirjamligi va ko‘plab tabassumli kunlar tilayman. Boshqalarga ulashgan mehringiz o‘zingizga bir necha barobar bo‘lib qaytsin.',
-    faqEyebrow: 'OLDINDAN BILISH FOYDALI',
-    faqTitle: 'Uchrashuvimiz yoqimli o‘tsin',
-    questions: [
-      {q:'Yubiley qachon bo‘ladi?',a:'Sizni 4 noyabr kuni kutamiz. Shavkat va Shuhrat 60 yoshini bir kunda, oila va do‘stlar davrasidagi umumiy bayramda nishonlaydi.'},
-      {q:'Oqshom soat nechada boshlanadi?',a:'Aniq boshlanish vaqti qo‘shimcha e’lon qilinadi. Yo‘lga chiqishdan avval vaqtni yubilyardan aniqlashtirib, safaringizni xotirjam rejalashtiring.'},
-      {q:'Qayerda uchrashamiz?',a:'Samarqand shahridagi «Samarkand» restoranida. Aniq manzil va mo‘ljal hali aniqlashtirilmoqda. Xarita tugmasi hozircha restoran qidiruvini ochadi. Yo‘lga chiqishdan oldin uchrashuv joyini yubilyar bilan tekshiring.'},
-      {q:'Kelishimni qanday xabar qilaman?',a:'Iltimos, yubilyarga shaxsan qo‘ng‘iroq qiling yoki yozing va qatnasha olishingizni bildiring. Rejalaringiz o‘zgarsa ham xabar bering: bu har bir mehmon uchun tayyorgarlik ko‘rishimizga yordam beradi.'},
-      {q:'O‘zim bilan nima olib kelay?',a:'Yaxshi kayfiyat, tabassum va ezgu tilaklar. Sizning e’tiboringiz hamda bu kunni birgalikda o‘tkazish imkoniyati biz uchun ayniqsa qadrli.'},
-      {q:'Birga suratga tushish mumkinmi?',a:'Bu kun xotirasini birgalikdagi suratlarda saqlashni juda istaymiz. Siz bilan suratga tushishdan xursand bo‘lamiz — eng iliq lahzalar faqat xotiradagina qolmasin.'},
-    ],
-    farewell: 'Bayram dasturxonida ko‘rishguncha. Sizni kutamiz!',
-  },
+  tj: {
+  "letter": [
+    "Шаст сол роҳи дарозест, вале арзиши аслии он бо одамоне чен мешавад, ки дар канори мо ҳастанд. Аз ин рӯ, дар ин рӯз мехоҳам касонеро, ки эҳтирому қадр мекунам ва ҳамеша аз диданашон шод мешавам, гирди як дастархон ҷамъ оварам. Шумо низ аз ҷумлаи ҳамин азизони дил ҳастед.",
+    "Ҳузури шумо ҷашни моро гармтар мекунад. Бо шумо дидорбинӣ кардан, бе шитоб суҳбат оростан, суханони нек шунидан ва танҳо дар канори ҳам будан бароям хушнудист. Бигзор дар ин шом ташвишҳои ҳаррӯза ҷойи худро ба шодии дидор диҳанд.",
+    "Ману бародари ҳамзодам ҷашни 60-солагиамонро якҷоя мегузаронем ва шуморо аз таҳти дил даъват мекунем, ки ин рӯзро бо мо бошед. Бо табъи болида биёед: аз ҳама муҳим барои мо суҳбати самимӣ, табассум ва ҳузури азизон аст."
+  ],
+  "eyebrow": "БО ЭҲТИРОМИ ХОС БА ШУМО",
+  "title": "Бо шумо ин шом гармтар мешавад",
+  "dedication": "Шуморо бо шодӣ интизорем",
+  "paragraphs": [
+    "Одамоне ҳастанд, ки худи дидорашон як рӯйдоди хуш аст. Шумо барои ман чунин инсон ҳастед. Меҳрубонӣ, таваҷҷуҳ ва муносибати самимии шумо сазовори беҳтарин суханони сипосанд.",
+    "Ин даъватнома нишонаи хурди эҳтироми бузурги ман аст. Мехоҳам худро меҳмони азизе эҳсос кунед, ки аз таҳти дил интизораш ҳастанд. Умедворам, ин шом ба шумо табъи болида, суҳбатҳои гуворо ва хотираҳои ширин мебахшад.",
+    "Ташаккур, ки барои дидорҳои муҳим вақт меёбед. Дар миёни корҳои рӯзмарра лаҳзае истодан, азизонро дидан ва шодиро бо онҳо тақсим кардан бисёр арзишманд аст. Хушбахт мешавам, агар дар рӯзи ҷашнам ин лаҳзаҳоро бо шумо гузаронам."
+  ],
+  "quote": "Зеботарин ороиши ҷашн — одамоне ҳастанд, ки аз диданашон шодем.",
+  "wishTitle": "Таманниёти неки ман ба шумо",
+  "wish": "Бигзор дар хонадони шумо ҳамеша сулҳу осоиш ва фаровонӣ бошад, дар каноратон одамони меҳрубону боэътимод бошанд ва дар пеш хушхабару рӯйдодҳои фараҳбахш шуморо интизор шаванд. Ба шумо саломатии бардавом, оромии дил ва рӯзҳои пур аз табассум орзу мекунам. Бигзор меҳре, ки ба дигарон мебахшед, чандин баробар ба худатон баргардад.",
+  "faqEyebrow": "ОН ЧӢ ПЕШАКӢ ДОНИСТАН ХУБ АСТ",
+  "faqTitle": "То дидори мо гуворо бошад",
+  "questions": [
+    {
+      "q": "Ҷашн кай баргузор мешавад?",
+      "a": "Шуморо 4 ноябр интизорем. Шавкат ва Шуҳрат 60-солагии худро якҷоя, дар ҳалқаи пайвандон ва дӯстон ҷашн мегиранд."
+    },
+    {
+      "q": "Шом соати чанд оғоз мешавад?",
+      "a": "Вақти дақиқи оғозро баъдтар хабар медиҳем. Лутфан, пеш аз роҳ баромадан онро аз соҳибҷашн пурсед, то сафаратонро бо хотири ҷамъ ба нақша гиред."
+    },
+    {
+      "q": "Дар куҷо ҷамъ мешавем?",
+      "a": "Дар тарабхонаи «Самарқанд», дар шаҳри Самарқанд. Суроғаи дақиқ ва нишонаи роҳ ҳанӯз муайян карда мешаванд. Тугмаи харита ҳоло ҷустуҷӯи тарабхонаро мекушояд. Пеш аз сафар ҷойи вохӯриро бо соҳибҷашн аниқ кунед."
+    },
+    {
+      "q": "Чӣ тавр аз омаданам хабар диҳам?",
+      "a": "Лутфан, ба соҳибҷашн занг занед ё паём нависед ва бигӯед, ки оё метавонед ба ҷашн биёед. Агар нақшаатон тағйир ёбад, низ хабар диҳед: ин ба мо барои омодагӣ ба қабули ҳар меҳмон кумак мекунад."
+    },
+    {
+      "q": "Бо худ чӣ биёрам?",
+      "a": "Табъи болида, табассум ва орзуҳои нек. Таваҷҷуҳи шумо ва имкони якҷоя гузаронидани ин рӯз барои мо бисёр азиз аст."
+    },
+    {
+      "q": "Метавонем якҷоя акс гирем?",
+      "a": "Мехоҳем хотираи ин рӯзро дар аксҳои якҷоя нигоҳ дорем. Бо шумо акс гирифтан бароямон хушнудист — бигзор лаҳзаҳои ширин на танҳо дар ёдҳо бимонанд."
+    }
+  ],
+  "farewell": "То дидори наздик дар сари дастархони идона. Шуморо интизорем!"
+}
 };

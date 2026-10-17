@@ -2,6 +2,6 @@
 export const restaurant = {
   mapUrl: 'https://www.google.com/maps/search/?api=1&query=Samarkand+restaurant+Samarkand+Uzbekistan',
   photos: [
-    {id:'exterior',src:null as string|null,label:{ru:'Фасад ресторана',uz:'Restoran fasadi'}},
+    {id:'exterior',src:null as string|null,label:{ru:'Фасад ресторана',tj:'Намои берунии тарабхона'}},
   ],
 };

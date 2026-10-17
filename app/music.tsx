@@ -37,9 +37,9 @@ export default function Music({ language }: { language: Language }) {
 
   return <>
     <audio ref={audio} src="/audio/celebration.wav" autoPlay loop preload="auto" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => setError(true)} />
-    <button type="button" className={`music-toggle ${playing ? 'is-playing' : ''}`} aria-label={ru ? (playing ? 'Выключить музыку' : 'Включить музыку') : (playing ? 'Musiqani o‘chirish' : 'Musiqani yoqish')} aria-pressed={playing} onClick={toggle}>
-      {playing ? <Volume2 size={18}/> : <VolumeX size={18}/>}<span>{ru ? 'Музыка' : 'Musiqa'}</span><span className="equalizer" aria-hidden="true"><i/><i/><i/></span>
+    <button type="button" className={`music-toggle ${playing ? 'is-playing' : ''}`} aria-label={ru ? (playing ? 'Выключить музыку' : 'Включить музыку') : (playing ? 'Хомӯш кардани мусиқӣ' : 'Фаъол кардани мусиқӣ')} aria-pressed={playing} onClick={toggle}>
+      {playing ? <Volume2 size={18}/> : <VolumeX size={18}/>}<span>{ru ? 'Музыка' : 'Мусиқӣ'}</span><span className="equalizer" aria-hidden="true"><i/><i/><i/></span>
     </button>
-    {error && <p className="music-error" role="status">{ru ? 'Звук недоступен. Попробуйте включить музыку ещё раз.' : 'Ovoz mavjud emas. Musiqani qayta yoqib ko‘ring.'}</p>}
+    {error && <p className="music-error" role="status">{ru ? 'Звук недоступен. Попробуйте включить музыку ещё раз.' : 'Садо дастрас нест. Мусиқиро бори дигар фаъол кунед.'}</p>}
   </>;
 }
