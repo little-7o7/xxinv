@@ -18,13 +18,13 @@ export default function PhotoSections({language, celebrant}:{language:Language;c
     <div className="celebration-divider" aria-hidden="true"><span>04</span><i>✧</i><span>11</span></div>
     <section id="venue" className="venue-section section-shell" data-reveal>
       <div className="venue-heading"><div><p className="eyebrow">{ru ? 'МЕСТО НАШЕЙ ВСТРЕЧИ' : 'UCHRASHUV JOYIMIZ'}</p><h2>{ru ? 'Ресторан «Самарканд»' : '«Samarkand» restorani'}</h2></div><div className="venue-summary"><span>{ru?'Самарканд':'Samarqand'} · 4 {ru?'ноября':'noyabr'}</span><p>{ru?'Вечер в кругу родных и друзей':'Oila va do‘stlar davrasidagi oqshom'}</p></div></div>
-      <div className="venue-gallery" role="region" aria-label={ru?'Фотографии ресторана':'Restoran suratlari'} tabIndex={0}>
+      <div className="venue-gallery venue-single" role="region" aria-label={ru?'Фотография ресторана снаружи':'Restoranning tashqi surati'}>
         {restaurant.photos.map((photo,index)=><figure key={photo.id} className={`venue-photo venue-photo-${index}`}>
-          {photo.src?<Image src={photo.src} alt={photo.label[language]} fill sizes="(max-width: 650px) 85vw, 60vw"/>:<div className="venue-empty"><Building2 size={index===0?48:32} strokeWidth={.7}/><span>{ru?'Место для фотографии':'Surat uchun joy'}</span></div>}
+          {photo.src?<Image src={photo.src} alt={photo.label[language]} fill sizes="(max-width: 650px) 90vw, 1040px"/>:<div className="venue-empty"><Building2 size={index===0?48:32} strokeWidth={.7}/><span>{ru?'Место для фотографии':'Surat uchun joy'}</span></div>}
           <figcaption><span>0{index+1}</span>{photo.label[language]}</figcaption>
         </figure>)}
       </div>
-      <div className="venue-bottom"><p>{ru?'Фотографии зала, фасада и атмосферы добавим позже.':'Zal, fasad va muhit suratlarini keyinroq qo‘shamiz.'}</p><a href={restaurant.mapUrl} target="_blank" rel="noreferrer">{ru?'Найти на карте':'Xaritadan topish'}<ArrowUpRight size={18}/></a></div>
+      <div className="venue-bottom"><p>{ru?'Фотографию ресторана снаружи добавим позже.':'Restoranning tashqi suratini keyinroq qo‘shamiz.'}</p><a href={restaurant.mapUrl} target="_blank" rel="noreferrer">{ru?'Найти на карте':'Xaritadan topish'}<ArrowUpRight size={18}/></a></div>
     </section>
     <section id="information" className="information-section section-shell" data-reveal>
       <p className="eyebrow">{ru?'ДО ВСТРЕЧИ НА ПРАЗДНИКЕ':'BAYRAMDA KO‘RISHGUNCHA'}</p><h2>{ru?'Несколько тёплых деталей':'Bir nechta muhim tafsilot'}</h2>
