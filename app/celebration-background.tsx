@@ -17,7 +17,7 @@ export default function CelebrationBackground({theme,language}:{theme:Theme;lang
     let width=0,height=0,frame=0,last=0,elapsed=0,nextBurst=.1;
     let sparks:Spark[]=[];
     const palette=theme==='rose'?['244,192,134','225,144,157','255,221,184']:theme==='jade'?['225,198,133','145,219,186','239,222,176']:['230,197,132','147,190,240','224,164,186'];
-    const stars=Array.from({length:45},()=>({x:Math.random(),y:Math.random(),size:Math.random()*1.3+.4,phase:Math.random()*6}));
+    const stars=Array.from({length:180},()=>({x:Math.random(),y:Math.random(),size:Math.random()*1.3+.4,phase:Math.random()*6}));
     const resize=()=>{
       width=window.innerWidth;height=window.innerHeight;
       const ratio=Math.min(window.devicePixelRatio||1,1.5);
@@ -47,7 +47,7 @@ export default function CelebrationBackground({theme,language}:{theme:Theme;lang
         ctx.arc(star.x*width,star.y*height,star.size,0,Math.PI*2);ctx.fill();
       }
       if(!paused&&!media.matches){
-        if(elapsed>=nextBurst){burst();nextBurst=elapsed+1.5+Math.random()*.7;}
+        if(elapsed>=nextBurst){burst();nextBurst=elapsed+(1.5+Math.random()*.7)/4;}
         sparks=sparks.filter(s=>s.life>0);
         for(const s of sparks){
           const px=s.x,py=s.y;s.life-=dt;s.vx*=Math.exp(-dt*.7);s.vy=s.vy*Math.exp(-dt*.7)+dt*18;s.x+=s.vx*dt;s.y+=s.vy*dt;
