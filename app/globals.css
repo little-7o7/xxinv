@@ -46,3 +46,14 @@ html{scrollbar-color:#b99c65 #244d73}::-webkit-scrollbar-track{background:#244d7
 @media(max-width:650px){.hero{margin:12px 14px 18px;padding:48px 20px 32px;min-height:715px}.ornamental-corner{width:80px;height:80px}.hero h1{font-size:55px}.hero .side-caption{display:none}.anniversary{width:300px;height:300px;transform:scale(.9);margin:4px 0 0}.sixty{font-size:215px}.years{bottom:43px}.tagline{font-size:24px;text-align:center}.letter{margin:0 14px;padding:75px 22px}.letter .ornamental-corner{width:60px;height:60px}.letter h2{font-size:37px}.hero-date{gap:16px}.hero .scroll{margin-top:30px}}
 
 .portrait-single{max-width:440px;margin:0 auto}.portrait-single .portrait-empty{min-height:480px}.portrait-single .portrait-frame>img{height:auto;aspect-ratio:4/5}.portrait-single figcaption{justify-content:space-between}@media(max-width:650px){.portrait-single{max-width:350px}.portrait-single .portrait-empty{min-height:370px}.portrait-single .portrait-monogram{font-size:150px}.portrait-single figcaption h3{width:auto}.portrait-single .portrait-empty p{font-size:12px}.portrait-single .portrait-empty>span:last-child{font-size:10px}}
+
+/* Polished gold: warm shadows, reflective highlights and crisp fine edges. */
+main{--gold:#efc65d;--line:#e7bc5c70;--metallic-gold:linear-gradient(115deg,#bd8529 0%,#f4cd69 21%,#fff2b1 35%,#dba431 48%,#fff0b6 49%,#f9dc83 64%,#c18a28 82%,#f6d36e 100%)}
+main[data-theme=rose],main[data-theme=jade]{--gold:#efc65d;--line:#e7bc5c70}
+.ornamental-corner,.letter .ornamental-corner{opacity:1;stroke-width:1.2;filter:drop-shadow(0 1px 0 #56340d) drop-shadow(0 0 2px #ffd87835)}
+.ornamental-frame{border-image:linear-gradient(125deg,#a97829,#ffe9a1 28%,#bb882d 48%,#ffe8a0 72%,#b27b22) 1}
+.ornamental-frame:before{border-image:linear-gradient(45deg,#f8d77e,#ac7523 35%,#fff0b3 65%,#c3943b) 1;opacity:.85}
+.hero h1,.sixty,.person-card h3,.signature,.letter h2 em,.detail-grid h3,.footer-date{background-image:var(--metallic-gold);background-clip:text;-webkit-background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 1px 1px #39240d55)}
+.hero-date,.eyebrow,.years{color:#f5d477;text-shadow:0 1px 1px #62410a66}
+.jubilee-seal path{stroke:#e6b84f;stroke-width:2}
+.portrait-frame{border-image:linear-gradient(135deg,#ac7822,#ffecaa 30%,#c18b2c 55%,#f8d77b 80%,#b98423) 1}
