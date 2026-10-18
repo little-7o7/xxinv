@@ -1,16 +1,14 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { Sparkles } from 'lucide-react';
-import type { Language, Theme } from '../lib/invitations';
+import { useEffect, useRef } from 'react';
+import type { Theme } from '../lib/invitations';
 
 type Point={x:number;y:number};
 type Spark=Point&{vx:number;vy:number;life:number;max:number;color:string;size:number;trail:Point[];twinkle:number;drag:number;gravity:number};
 type Rocket=Point&{sx:number;sy:number;tx:number;ty:number;age:number;duration:number;trail:Point[]};
 
-export default function CelebrationBackground({theme,language}:{theme:Theme;language:Language}) {
+export default function CelebrationBackground({theme}:{theme:Theme}) {
   const canvas=useRef<HTMLCanvasElement>(null);
-  const [paused,setPaused]=useState(false);
   useEffect(()=>{
     const surface=canvas.current;
     const context=surface?.getContext('2d');
@@ -65,7 +63,7 @@ export default function CelebrationBackground({theme,language}:{theme:Theme;lang
         const alpha=.18+(Math.sin(elapsed*.5+star.phase)+1)*.15;
         ctx.fillStyle=`rgba(255,232,186,${alpha})`;ctx.beginPath();ctx.arc(star.x*width,star.y*height,star.size,0,Math.PI*2);ctx.fill();
       }
-      if(!paused&&!media.matches){
+      if(!media.matches){
         ctx.globalCompositeOperation='lighter';
         if(elapsed>=nextLaunch){launch();nextLaunch=elapsed+(1.5+Math.random()*.7)/3.2;}
         for(const r of rockets){
@@ -108,6 +106,6 @@ export default function CelebrationBackground({theme,language}:{theme:Theme;lang
     const onResize=()=>{resize();start()};
     resize();start();window.addEventListener('resize',onResize);document.addEventListener('visibilitychange',visibility);media.addEventListener('change',start);
     return()=>{cancelAnimationFrame(frame);window.removeEventListener('resize',onResize);document.removeEventListener('visibilitychange',visibility);media.removeEventListener('change',start)};
-  },[theme,paused]);
-  return <><div className="celebration-sky" aria-hidden="true"><div className="sky-glow sky-glow-one"/><div className="sky-glow sky-glow-two"/><canvas ref={canvas}/></div><button type="button" className="effects-toggle" aria-pressed={!paused} aria-label={language==='ru'?(paused?'Включить фейерверки':'Приостановить фейерверки'):(paused?'Фаъол кардани оташбозӣ':'Боздоштани оташбозӣ')} onClick={()=>setPaused(value=>!value)}><Sparkles size={16}/><span>{language==='ru'?'Фейерверки':'Оташбозӣ'}</span></button></>;
+  },[theme]);
+  return <div className="celebration-sky" aria-hidden="true"><div className="sky-glow sky-glow-one"/><div className="sky-glow sky-glow-two"/><canvas ref={canvas}/></div>;
 }

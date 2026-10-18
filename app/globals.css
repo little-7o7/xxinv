@@ -57,3 +57,15 @@ main[data-theme=rose],main[data-theme=jade]{--gold:#efc65d;--line:#e7bc5c70}
 .hero-date,.eyebrow,.years{color:#f5d477;text-shadow:0 1px 1px #62410a66}
 .jubilee-seal path{stroke:#e6b84f;stroke-width:2}
 .portrait-frame{border-image:linear-gradient(135deg,#ac7822,#ffecaa 30%,#c18b2c 55%,#f8d77b 80%,#b98423) 1}
+
+/* Image-based foil clipped to lettering and sampled by SVG ornament strokes. */
+main{--metallic-gold:url('/textures/gold-foil.jpg')}
+.hero h1,.sixty,.person-card h3,.signature,.letter h2 em,.detail-grid h3,.footer-date{background-image:var(--metallic-gold);background-color:#edbd57;background-blend-mode:multiply;background-size:300px 300px;background-position:center;background-clip:text;-webkit-background-clip:text;filter:drop-shadow(0 1px 0 #694314) drop-shadow(0 -1px 0 #ffe8a53d)}
+.sixty{background-size:360px 360px;background-position:40% 30%}
+.ornamental-frame,.ornamental-frame:before,.portrait-frame{border-image:url('/textures/gold-foil.jpg') 30 round}
+.ornamental-corner,.letter .ornamental-corner{stroke-width:1.7;filter:drop-shadow(0 1px 0 #5c3d0e) saturate(1.45)}
+.jubilee-seal path{stroke-width:3}
+.portrait-single{max-width:540px}.portrait-single .portrait-empty{min-height:580px}
+@media(max-width:650px){.portrait-single{max-width:100%}.portrait-single .portrait-empty{min-height:420px}}
+
+.countdown{padding:64px 24px 24px;text-align:center}.countdown-units{display:flex;justify-content:center;gap:clamp(14px,4vw,48px);margin:24px 0}.countdown-unit{display:flex;flex-direction:column;min-width:60px;gap:8px}.countdown-unit strong{font:500 clamp(52px,8vw,86px)/1 'Cormorant Garamond',serif;font-variant-numeric:tabular-nums;background:var(--metallic-gold) center/260px;background-clip:text;-webkit-background-clip:text;color:transparent}.countdown-unit span{font-size:11px;letter-spacing:2px;color:var(--gold)}.countdown-note{font-size:12px;line-height:1.8;color:var(--muted)}
