@@ -1,5 +1,5 @@
-// Upcoming 4 November celebration. Set startsAt with +05:00 when time is confirmed.
-export const event = {date: '2026-11-04', timeZone: 'Asia/Samarkand', startsAt: null as string | null};
+// Confirmed in the invitation copy supplied by the host.
+export const event = {date: '2026-11-04', timeZone: 'Asia/Samarkand', startsAt: '2026-11-04T18:00:00+05:00' as string | null};
 export function remaining(now: Date) {
   if (event.startsAt) {
     const seconds = Math.max(0, Math.floor((new Date(event.startsAt).getTime() - now.getTime()) / 1000));

@@ -8,9 +8,9 @@ export default function PhotoSections({language, celebrant}:{language:Language;c
   const person = celebrant;
   return <>
     <section id="portraits" className="portraits-section section-shell" data-reveal>
-      <div className="section-heading"><p className="eyebrow">{ru ? 'С ТЕПЛОМ ПРИГЛАШАЮ ВАС' : 'ШУМОРО АЗ ТАҲТИ ДИЛ ДАЪВАТ МЕКУНАМ'}</p><h2>{person.name}</h2><p>{ru ? 'Буду счастлив разделить с вами мой 60-летний юбилей.' : 'Аз он шод мешавам, ки ҷашни 60-солагиамро бо шумо мегузаронам.'}</p></div>
+      <div className="section-heading"><p className="eyebrow">{ru ? 'С УДОВОЛЬСТВИЕМ ПРИГЛАШАЮ ВАС' : 'ШУМОРО БО КАМОЛИ МАЙЛ ДАЪВАТ МЕКУНАМ'}</p><h2>{person.name}</h2><p>{ru ? 'Буду счастлив разделить с вами мой 60-летний юбилей.' : 'Аз он шод мешавам, ки ҷашни 60-солагиамро бо шумо мегузаронам.'}</p></div>
       <div className="portrait-single"><figure className="person-card">
-        <div className="portrait-frame">{person.photo ? <Image src={person.photo} alt={person.name} width={800} height={1000} sizes="(max-width: 650px) 85vw, 440px"/> : <div className="portrait-empty"><span className="portrait-monogram" aria-hidden="true">{person.name.charAt(0)}</span><Camera size={22} strokeWidth={1}/><p>{ru ? `Фотография: ${person.name}` : `Акси ${person.name}`}</p><span>{ru ? 'Скоро здесь появится портрет' : 'Ба зудӣ дар ин ҷо акс пайдо мешавад'}</span></div>}</div>
+        <div className="portrait-frame">{person.photo ? <Image src={person.photo} alt={person.name} width={3024} height={4032} sizes="(max-width: 650px) 85vw, 540px"/> : <div className="portrait-empty"><span className="portrait-monogram" aria-hidden="true">{person.name.charAt(0)}</span><Camera size={22} strokeWidth={1}/><p>{ru ? `Фотография: ${person.name}` : `Акси ${person.name}`}</p><span>{ru ? 'Скоро здесь появится портрет' : 'Ба зудӣ дар ин ҷо акс пайдо мешавад'}</span></div>}</div>
         <figcaption><h3>{person.name}</h3><span>60 {ru?'лет':'сол'}</span></figcaption>
       </figure></div>
       <p className="portrait-footnote">{ru ? 'Самое ценное — быть рядом.' : 'Аз ҳама арзишманд — дар канори ҳам будан.'}</p>
@@ -27,8 +27,8 @@ export default function PhotoSections({language, celebrant}:{language:Language;c
       <div className="venue-bottom"><p>{ru?'Фотографию ресторана снаружи добавим позже.':'Акси берунии тарабхонаро баъдтар илова мекунем.'}</p><a href={restaurant.mapUrl} target="_blank" rel="noreferrer">{ru?'Найти на карте':'Дар харита ёфтан'}<ArrowUpRight size={18}/></a></div>
     </section>
     <section id="information" className="information-section section-shell" data-reveal>
-      <p className="eyebrow">{ru?'ДО ВСТРЕЧИ НА ПРАЗДНИКЕ':'ТО ДИДОР ДАР ҶАШН'}</p><h2>{ru?'Несколько тёплых деталей':'Чанд ҷузъиёти муҳим'}</h2>
-      <div className="guest-notes"><article><span>01</span><h3>{ru?'Когда встречаемся':'Кай ҷамъ мешавем'}</h3><p>{ru?'4 ноября. Точное время начала сообщим дополнительно.':'4 ноябр. Вақти дақиқи оғозро баъдтар хабар медиҳем.'}</p></article><article><span>02</span><h3>{ru?'Главный подарок':'Беҳтарин туҳфа'}</h3><p>{ru?'Ваше присутствие, улыбки и добрые пожелания — самое ценное в этот день.':'Ҳузур, табассум ва орзуҳои неки шумо дар ин рӯз барои мо аз ҳама азизанд.'}</p></article><article><span>03</span><h3>{ru?'Сохраним этот вечер':'Ин шомро дар хотир нигоҳ медорем'}</h3><p>{ru?'Сделаем общие фотографии, чтобы тёплые моменты остались с нами надолго.':'Якҷоя акс мегирем, то лаҳзаҳои ширин солҳои зиёд бо мо бимонанд.'}</p></article></div>
+      <p className="eyebrow">{ru?'ДО ВСТРЕЧИ НА ПРАЗДНИКЕ':'ТО ДИДОР ДАР ҶАШН'}</p>
+
     </section>
   </>;
 }

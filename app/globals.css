@@ -69,3 +69,8 @@ main{--metallic-gold:url('/textures/gold-foil.jpg')}
 @media(max-width:650px){.portrait-single{max-width:100%}.portrait-single .portrait-empty{min-height:420px}}
 
 .countdown{padding:64px 24px 24px;text-align:center}.countdown-units{display:flex;justify-content:center;gap:clamp(14px,4vw,48px);margin:24px 0}.countdown-unit{display:flex;flex-direction:column;min-width:60px;gap:8px}.countdown-unit strong{font:500 clamp(52px,8vw,86px)/1 'Cormorant Garamond',serif;font-variant-numeric:tabular-nums;background:var(--metallic-gold) center/260px;background-clip:text;-webkit-background-clip:text;color:transparent}.countdown-unit span{font-size:11px;letter-spacing:2px;color:var(--gold)}.countdown-note{font-size:12px;line-height:1.8;color:var(--muted)}
+
+/* Requested calligraphic families use local fonts, with the existing web serif as fallback. */
+.letter .lead,.letter .letter-body{font-family:'Monotype Corsiva','Corsiva','Cormorant Garamond',serif;font-size:clamp(25px,3vw,32px);font-style:italic;line-height:1.55;max-width:680px}
+.extended-letter p:first-child{font-family:'Gabriola','Cormorant Garamond',serif;font-size:clamp(25px,3vw,31px);line-height:1.5}
+.portrait-single .portrait-frame>img{height:auto;aspect-ratio:auto;object-fit:contain}

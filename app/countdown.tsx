@@ -19,6 +19,7 @@ export default function Countdown({language}:{language:Language}) {
   return <section className="countdown" aria-label={ru?'Отсчёт до праздника':'Ҳисоби вақт то ҷашн'}>
     <p className="eyebrow">{title}</p>
     {!left?.finished && <div className="countdown-units">{values.slice(0,event.startsAt?4:1).map((value,index)=><div className="countdown-unit" key={index}><strong>{value===null?'—':String(value).padStart(2,'0')}</strong><span>{labels[index]}</span></div>)}</div>}
+    {event.startsAt && !left?.finished && <p className="countdown-note">{ru?'4 ноября · 18:00':'4 ноябр · 18:00'}</p>}
     {!event.startsAt && !left?.finished && <p className="countdown-note">{ru?'4 ноября · Точное время сообщим позже':'4 ноябр · Вақти дақиқро баъдтар хабар медиҳем'}</p>}
   </section>;
 }
