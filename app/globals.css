@@ -67,3 +67,10 @@ main[data-theme=rose],main[data-theme=jade]{--gold:#efc65d;--line:#e7bc5c70}
 .letter .lead,.letter .letter-body{font-family:'Monotype Corsiva','Corsiva','Cormorant Garamond',serif;font-size:clamp(25px,3vw,32px);font-style:italic;line-height:1.55;max-width:680px}
 .extended-letter p:first-child{font-family:'Gabriola','Cormorant Garamond',serif;font-size:clamp(25px,3vw,31px);line-height:1.5}
 .portrait-single .portrait-frame>img{height:auto;aspect-ratio:auto;object-fit:contain}
+
+/* Original soft cream lettering and restrained gold, as in the approved reference. */
+main[data-theme]{--ink:#f5e9d5;--gold:#e4be7d;--metallic-gold:linear-gradient(120deg,#e4be7d 5%,#fff1c7 38%,#e4be7d 65%,#a9844d)}
+.hero h1,.person-card h3,.signature,.detail-grid h3{background:none;color:var(--ink);filter:none;text-shadow:none}
+.letter h2 em,.footer-date,.hero-date,.eyebrow,.years{background:none;color:var(--gold);filter:none;text-shadow:none}
+.sixty{background-image:var(--metallic-gold);color:transparent;filter:none;text-shadow:none}
+.countdown-unit strong{background:none;color:var(--gold)}
