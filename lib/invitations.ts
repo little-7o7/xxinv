@@ -12,7 +12,7 @@ export type Celebrant = {
 // Set photo to a public path, e.g. '/photos/shavkat.jpg', when photos are ready.
 export const celebrants: Record<CelebrantId, Celebrant> = {
   shavkat: { id: 'shavkat', name: 'Shavkat', nameRu: 'Шавкат', photo: '/photos/shavkat.jpg', theme: 'sapphire' },
-  shuhrat: { id: 'shuhrat', name: 'Shuhrat', nameRu: 'Шухрат', photo: null, theme: 'sapphire' },
+  shuhrat: { id: 'shuhrat', name: 'Shuhrat', nameRu: 'Шухрат', photo: '/photos/shuhrat.jpg', theme: 'sapphire' },
 };
 
 export function guestDisplayName(slug: string): string {

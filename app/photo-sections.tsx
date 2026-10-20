@@ -21,7 +21,6 @@ export default function PhotoSections({language, celebrant}:{language:Language;c
       <div className="venue-gallery venue-single" role="region" aria-label={ru?'Фотография ресторана снаружи':'Акси берунии тарабхона'}>
         {restaurant.photos.map((photo,index)=><figure key={photo.id} className={`venue-photo venue-photo-${index}`}>
           {photo.src?<Image src={photo.src} alt={photo.label[language]} fill sizes="(max-width: 650px) 90vw, 1040px"/>:<div className="venue-empty"><Building2 size={index===0?48:32} strokeWidth={.7}/><span>{ru?'Место для фотографии':'Ҷой барои акс'}</span></div>}
-          <figcaption><span>0{index+1}</span>{photo.label[language]}</figcaption>
         </figure>)}
       </div>
       <div className="venue-bottom"><p>{ru?'Ждём вас в ресторане «Самарканд».':'Шуморо дар тарабхонаи «Самарқанд» интизорем.'}</p><a href={restaurant.mapUrl} target="_blank" rel="noreferrer">{ru?'Найти на карте':'Дар харита ёфтан'}<ArrowUpRight size={18}/></a></div>
