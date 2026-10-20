@@ -1,5 +1,5 @@
 'use client';
-import {useState,useEffect} from 'react';
+import {useEffect} from 'react';
 import Music from './music';
 import Countdown from './countdown';
 import OrnamentalFrame from './ornamental-frame';
@@ -9,14 +9,12 @@ import CelebrationBackground from './celebration-background';
 import ScrollEffects from './scroll-effects';
 import PhotoSections from './photo-sections';
 import {restaurant} from '../lib/restaurant';
-import {invitationPath, type Celebrant, type Language, type Theme} from '../lib/invitations';
-import {ArrowDown,ArrowUpRight,MapPin,CalendarDays,Copy,Check} from 'lucide-react';
+import {invitationPath, type Celebrant, type Language} from '../lib/invitations';
+import {ArrowDown,ArrowUpRight,MapPin,CalendarDays} from 'lucide-react';
 const copy={ru:{invite:'ПРИГЛАШЕНИЕ НА ЮБИЛЕЙ',years:'лет',line:'60 лет. В кругу самых близких.',dear:'Дорогой',fallbackGuest:'гость',intro:'Есть даты, которые хочется разделить с самыми близкими.',body:'Мне исполняется 60! Самый дорогой подарок — встретить этот день в кругу родных и друзей. Буду счастлив видеть вас на нашем с братом общем празднике!' ,details:'Вечер, который нас объединит',date:'4 ноября',time:'18:00',place:'Ресторан «Самарканд»',city:'Самарканд',map:'Найти ресторан',photos:'Здесь будет фотография',closing:'Самые тёплые воспоминания создаются вместе.',signature:'С уважением, ',personal:'ВАША ПЕРСОНАЛЬНАЯ ССЫЛКА',name:'Имя гостя',create:'Копировать ссылку',copied:'Ссылка скопирована',error:'Не удалось скопировать. Скопируйте ссылку ниже.',style:'Выберите оформление',note:'Предварительный макет · фотографии добавим позже'},tj:{"invite": "ДАЪВАТ БА ҶАШНИ 60-СОЛАГӢ", "years": "сол", "line": "60 сол. Дар ҳалқаи наздикон.", "dear": "Муҳтарам", "fallbackGuest": "меҳмон", "intro": "Рӯзҳое ҳастанд, ки мехоҳем онҳоро бо азизонамон гузаронем.", "body": "Ман 60-сола мешавам! Беҳтарин туҳфа — ин рӯзро дар ҳалқаи пайвандон ва дӯстон пешвоз гирифтан аст. Аз дидани шумо дар ҷашни муштараки ману бародарам шод хоҳам шуд!", "details": "Шоме, ки моро ба ҳам меорад", "date": "4 ноябр", "time": "18:00", "place": "Тарабхонаи «Самарқанд»", "city": "Самарқанд", "map": "Ёфтани тарабхона", "photos": "Дар ин ҷо акс ҷойгир мешавад", "closing": "Хотираҳои ширинро якҷоя меофарем.", "signature": "Бо эҳтиром, ", "personal": "ПАЙВАНДИ ШАХСИИ ШУМО", "name": "Номи меҳмон", "create": "Нусха кардани пайванд", "copied": "Пайванд нусха шуд", "error": "Нусха нашуд. Пайванди зерро нусха кунед.", "style": "Ороишро интихоб кунед", "note": "Намунаи пешакӣ · аксҳоро баъдтар илова мекунем"}};
 export default function Invitation({language,guest,celebrant}:{language:Language;guest:string;celebrant:Celebrant}){
-const [theme,setTheme]=useState<Theme>(celebrant.theme);const [name,setName]=useState(guest);const [status,setStatus]=useState('');const [url,setUrl]=useState('');const t=copy[language];
-useEffect(()=>{document.documentElement.lang=language==='tj'?'tg':language; try { const saved=localStorage.getItem(`invitation-theme-${celebrant.id}`); if(saved==='sapphire'||saved==='rose'||saved==='jade')setTheme(saved); } catch {} },[language,celebrant.id]);
-function changeTheme(value:Theme){setTheme(value);try{localStorage.setItem(`invitation-theme-${celebrant.id}`,value)}catch{}}
-async function share(){const link=`${window.location.origin}${invitationPath(language,celebrant.id,name)}`;setUrl(link);try{await navigator.clipboard.writeText(link);setStatus(t.copied)}catch{setStatus(t.error)}}
+const theme=celebrant.theme;const t=copy[language];
+useEffect(()=>{document.documentElement.lang=language==='tj'?'tg':language;},[language]);
 return <main data-theme={theme} id="top">
 <CelebrationBackground theme={theme}/><ScrollEffects/><Music language={language}/>
 <header className="navigation"><button type="button" className="monogram logo-button" aria-label={language==='ru'?'Вернуться наверх':'Ба боло баргаштан'} onClick={()=>window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'})}>{'Ш'}<i>60</i></button><span className="nav-caption">{celebrant.name.toUpperCase()} · {t.invite}</span><nav aria-label={language==='ru'?'Язык':'Забон'}><a className={language==='ru'?'active':''} href={invitationPath('ru',celebrant.id,guest)}>RU</a><span>/</span><a className={language==='tj'?'active':''} href={invitationPath('tj',celebrant.id,guest)}>TJ</a></nav></header>
@@ -27,5 +25,5 @@ return <main data-theme={theme} id="top">
 <section id="details" className="details" data-reveal><p className="eyebrow">04 / 11 · {t.city.toUpperCase()}</p><h2>{t.details}</h2><div className="detail-grid"><article><CalendarDays strokeWidth={1} size={27}/><h3>{t.date}</h3><p>{t.time}</p></article><article><MapPin strokeWidth={1} size={27}/><h3>{t.place}</h3><p>{t.city}</p><a href={restaurant.mapUrl} target="_blank" rel="noreferrer">{t.map} <ArrowUpRight size={16}/></a></article></div></section>
 <GuestWords language={language} name={celebrant.name}/>
 <footer data-reveal><h2>{t.closing}</h2><p>{t.signature}{celebrant.name}{celebrant.id==='shuhrat'?' Насреддинов':''}</p><span className="footer-date">04 · 11</span></footer>
-<aside className="studio"><p>{t.style}</p><div className="themes">{[['sapphire',language==='ru'?'01 · Парламентский синий':'01 · Кабуди парламентӣ'],['rose',language==='ru'?'02 · Розовая медь':'02 · Миси гулобӣ'],['jade',language==='ru'?'03 · Нефрит':'03 · Нефрит']].map(([id,label])=><button key={id} aria-pressed={theme===id} onClick={()=>changeTheme(id as Theme)}><i className={id}/>{label}{theme===id&&<Check size={13}/>}</button>)}</div><details><summary>{t.personal}</summary><div className="share"><label htmlFor="guest">{t.name}</label><input id="guest" value={name} onChange={e=>{setName(e.target.value);setStatus('')}} maxLength={100}/><button className="button" onClick={share}><Copy size={15}/>{t.create}</button><p role="status">{status}</p>{url&&<a href={url}>{url}</a>}</div></details><small>{t.note}</small></aside>
+
 </main>}
