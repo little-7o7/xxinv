@@ -74,3 +74,10 @@ main[data-theme]{--ink:#f5e9d5;--gold:#e4be7d;--metallic-gold:linear-gradient(12
 .letter h2 em,.footer-date,.hero-date,.eyebrow,.years{background:none;color:var(--gold);filter:none;text-shadow:none}
 .sixty{background-image:var(--metallic-gold);color:transparent;filter:none;text-shadow:none}
 .countdown-unit strong{background:none;color:var(--gold)}
+
+/* Preserve the wide facade and soften daylight into the evening page palette. */
+.venue-single .venue-photo{aspect-ratio:20/9;min-height:0}
+.venue-single .venue-photo img{object-fit:contain;filter:brightness(.8) saturate(.85)}
+.venue-single .venue-photo:after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,#152e4b10 25%,#12243a14 60%,#12243a85 100%)}
+.venue-single .venue-photo figcaption{z-index:1;background:none;text-shadow:0 1px 4px #0009}
+@media(max-width:650px){.venue-single .venue-photo{aspect-ratio:20/9;min-height:0}.venue-single .venue-photo figcaption{padding:12px;font-size:10px}}

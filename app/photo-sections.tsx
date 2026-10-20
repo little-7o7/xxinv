@@ -24,7 +24,7 @@ export default function PhotoSections({language, celebrant}:{language:Language;c
           <figcaption><span>0{index+1}</span>{photo.label[language]}</figcaption>
         </figure>)}
       </div>
-      <div className="venue-bottom"><p>{ru?'Фотографию ресторана снаружи добавим позже.':'Акси берунии тарабхонаро баъдтар илова мекунем.'}</p><a href={restaurant.mapUrl} target="_blank" rel="noreferrer">{ru?'Найти на карте':'Дар харита ёфтан'}<ArrowUpRight size={18}/></a></div>
+      <div className="venue-bottom"><p>{ru?'Ждём вас в ресторане «Самарканд».':'Шуморо дар тарабхонаи «Самарқанд» интизорем.'}</p><a href={restaurant.mapUrl} target="_blank" rel="noreferrer">{ru?'Найти на карте':'Дар харита ёфтан'}<ArrowUpRight size={18}/></a></div>
     </section>
     <section id="information" className="information-section section-shell" data-reveal>
       <p className="eyebrow">{ru?'ДО ВСТРЕЧИ НА ПРАЗДНИКЕ':'ТО ДИДОР ДАР ҶАШН'}</p>
