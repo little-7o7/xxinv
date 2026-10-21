@@ -81,3 +81,10 @@ main[data-theme]{--ink:#f5e9d5;--gold:#e4be7d;--metallic-gold:linear-gradient(12
 .venue-single .venue-photo:after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,#152e4b10 25%,#12243a14 60%,#12243a85 100%)}
 .venue-single .venue-photo figcaption{z-index:1;background:none;text-shadow:0 1px 4px #0009}
 @media(max-width:650px){.venue-single .venue-photo{aspect-ratio:20/9;min-height:0}.venue-single .venue-photo figcaption{padding:12px;font-size:10px}}
+
+/* Revised invitation copy: compact calligraphy and centered venue heading. */
+.hero h1.hero-invite{font-family:'Manrope',sans-serif;font-size:10px;line-height:1.5;letter-spacing:3px;font-weight:500;color:var(--gold);margin:10px 0 30px;text-align:center}
+.letter h2,.letter .letter-body,.extended-letter p,.extended-letter p:first-child{font-family:'Monotype Corsiva','Corsiva','Cormorant Garamond',serif;font-style:italic;line-height:1.35}
+.extended-letter p,.extended-letter p:first-child{font-size:clamp(24px,2.5vw,28px);margin-bottom:17px}.letter .letter-body{line-height:1.35}.letter h2{margin-bottom:22px}
+.venue-heading{display:block;text-align:center}.venue-heading .eyebrow{text-align:center}.venue-heading h2{max-width:none;margin:18px auto 0}.portrait-single figcaption{justify-content:center;text-align:center}.guest-faq h2{font-size:clamp(30px,3.5vw,45px)}
+@media(max-width:650px){.hero h1.hero-invite{font-size:9px;letter-spacing:2px}.extended-letter p,.extended-letter p:first-child{font-size:24px;line-height:1.35}}
