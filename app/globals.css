@@ -90,3 +90,8 @@ main[data-theme]{--ink:#f5e9d5;--gold:#e4be7d;--metallic-gold:linear-gradient(12
 @media(max-width:650px){.hero h1.hero-invite{font-size:9px;letter-spacing:2px}.extended-letter p,.extended-letter p:first-child{font-size:24px;line-height:1.35}}
 
 .venue-meeting{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin:32px 0 22px;text-align:center;scroll-margin-top:90px}.venue-meeting svg{color:var(--gold)}.venue-meeting p{font-size:19px;margin:0}.venue-meeting span{width:100%;color:var(--muted);font-size:14px}.venue-bottom{justify-content:center;align-items:center}
+/* Readable body copy throughout the invitation. */
+.section-heading>p:not(.eyebrow),.guest-wishes>p:not(.signature),.faq-list>details>p,.faq-list details p,.venue-bottom p,.countdown-note{font-size:18px;line-height:1.9}
+.faq-list summary{font-size:18px;line-height:1.6}.venue-bottom a{font-size:16px}.venue-meeting span{font-size:18px}
+.hero .scroll{margin-top:35px}
+@media(max-width:650px){.section-heading>p:not(.eyebrow),.guest-wishes>p:not(.signature),.faq-list details p,.countdown-note,.faq-list summary{font-size:16px}.venue-meeting span{font-size:16px}}

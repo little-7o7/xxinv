@@ -15,7 +15,6 @@ export default function PhotoSections({language, celebrant}:{language:Language;c
       </figure></div>
 
     </section>
-    <div className="celebration-divider" aria-hidden="true"><span>04</span><i>✧</i><span>11</span></div>
     <section id="venue" className="venue-section section-shell" data-reveal>
       <div className="venue-heading"><div><p className="eyebrow">{ru ? 'МЕСТО НАШЕЙ ВСТРЕЧИ' : 'ҶОЙИ ДИДОРИ МО'}</p><h2>{ru ? 'Ресторан' : 'Тарабхона'}<br/>{ru ? '«Самарканд»' : '«Самарқанд»'}</h2></div></div>
       <div className="venue-gallery venue-single" role="region" aria-label={ru?'Фотография ресторана снаружи':'Акси берунии тарабхона'}>
