@@ -3,3 +3,8 @@
 .next
 node_modules
 tests
+
+/*.docx
+/shavkat.JPG
+/shuhrat.jpeg
+.env*
