@@ -3,3 +3,5 @@ main[data-theme] :is(.letter h2,.letter .letter-body,.extended-letter p,.extende
 main[data-theme] .letter h2{font-size:clamp(36px,4vw,44px);line-height:1.3;color:var(--gold)}
 /* Farewell line and footer phrase: gold italic, like the old farewell. */
 main[data-theme] :is(.guest-farewell,footer h2){font-style:italic;color:var(--gold)}
+/* Hero tagline styled like the letter greeting. */
+main[data-theme] .hero .tagline{font-style:italic;color:var(--gold);font-size:clamp(36px,4vw,44px);line-height:1.3}
