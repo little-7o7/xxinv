@@ -1,7 +1,8 @@
-/* Italic letter style (greeting + letter text), as in the approved screenshot. */
-main[data-theme] :is(.letter h2,.letter .letter-body,.extended-letter p,.extended-letter p:first-child){font-style:italic;line-height:1.45}
-main[data-theme] .letter h2{font-size:clamp(36px,4vw,44px);line-height:1.3;color:var(--gold)}
-/* Farewell line and footer phrase: gold italic, like the old farewell. */
-main[data-theme] :is(.guest-farewell,footer h2){font-style:italic;color:var(--gold)}
+/* Overrides for the shared type scale in globals.css (that rule is very specific, hence !important). */
+/* Italic letter: greeting + letter text, as in the approved screenshot. */
+main[data-theme] :is(.letter h2,.letter .letter-body,.extended-letter p,.extended-letter p:first-child){font-style:italic!important;line-height:1.45!important}
+main[data-theme] .letter h2{font-size:clamp(36px,4vw,44px)!important;line-height:1.3!important;color:var(--gold)!important}
 /* Hero tagline styled like the letter greeting. */
-main[data-theme] .hero .tagline{font-style:italic;color:var(--gold);font-size:clamp(36px,4vw,44px);line-height:1.3}
+main[data-theme] .hero .tagline{font-style:italic!important;color:var(--gold)!important;font-size:clamp(36px,4vw,44px)!important;line-height:1.3!important}
+/* Farewell line and footer phrase: gold italic. */
+main[data-theme] :is(.guest-farewell,footer h2){font-style:italic!important;color:var(--gold)!important}
