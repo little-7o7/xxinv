@@ -5,4 +5,4 @@ main[data-theme] .letter h2{font-size:clamp(36px,4vw,44px)!important;line-height
 /* Hero tagline styled like the letter greeting. */
 main[data-theme] .hero .tagline{font-style:italic!important;color:var(--gold)!important;font-size:clamp(36px,4vw,44px)!important;line-height:1.3!important}
 /* Farewell line and footer phrase: gold italic. */
-main[data-theme] :is(.guest-farewell,footer h2){font-style:italic!important;color:var(--gold)!important}
+main[data-theme] :is(.guest-farewell,footer h2,.letter .signature,#portraits .section-heading>p:not(.eyebrow)){font-style:italic!important;color:var(--gold)!important}
