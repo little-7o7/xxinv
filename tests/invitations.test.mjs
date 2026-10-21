@@ -77,3 +77,7 @@ test('salutations support men, women and families and survive language switching
   assert.equal(guestGreeting('ru',''),'Дорогой гость!');
   assert.equal(parseInvitation(['ru','shuhrat','invalid','name']),null);
 });
+
+ test('percent-encoded Cyrillic URLs display readable guest names', () => {
+  assert.equal(parseInvitation(['ru','shuhrat','gaya',encodeURIComponent('малика')]).guest,'Малика');
+});

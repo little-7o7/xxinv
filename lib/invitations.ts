@@ -23,6 +23,7 @@ export const celebrants: Record<CelebrantId, Celebrant> = {
 };
 
 export function guestDisplayName(slug: string): string {
+  try { slug = decodeURIComponent(slug); } catch { /* Preserve a literal malformed percent sign. */ }
   return slug.replace(/[_-]+/g, ' ').trim().slice(0, 100).split(/\s+/)
     .map(word => word.charAt(0).toLocaleUpperCase() + word.slice(1)).join(' ');
 }
