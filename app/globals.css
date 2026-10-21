@@ -95,3 +95,6 @@ main[data-theme]{--ink:#f5e9d5;--gold:#e4be7d;--metallic-gold:linear-gradient(12
 .faq-list summary{font-size:18px;line-height:1.6}.venue-bottom a{font-size:16px}.venue-meeting span{font-size:18px}
 .hero .scroll{margin-top:35px}
 @media(max-width:650px){.section-heading>p:not(.eyebrow),.guest-wishes>p:not(.signature),.faq-list details p,.countdown-note,.faq-list summary{font-size:16px}.venue-meeting span{font-size:16px}}
+
+/* Wishes use the same serif typeface as their heading. */
+.guest-wishes>p:not(.signature){font-family:'Cormorant Garamond',serif;font-weight:400;font-style:normal;font-size:clamp(24px,2.5vw,28px);line-height:1.55}
