@@ -36,7 +36,7 @@ export default function Music({ language }: { language: Language }) {
   }
 
   return <>
-    <audio ref={audio} src="/audio/birthday-dance.wav" autoPlay loop preload="auto" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => setError(true)} />
+    <audio ref={audio} src="/audio/i-just-called.m4a" autoPlay loop preload="auto" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => setError(true)} />
     <button type="button" className={`music-toggle ${playing ? 'is-playing' : ''}`} aria-label={ru ? (playing ? 'Выключить музыку' : 'Включить музыку') : (playing ? 'Хомӯш кардани мусиқӣ' : 'Фаъол кардани мусиқӣ')} aria-pressed={playing} onClick={toggle}>
       {playing ? <Volume2 size={18}/> : <VolumeX size={18}/>}<span>{ru ? 'Музыка' : 'Мусиқӣ'}</span><span className="equalizer" aria-hidden="true"><i/><i/><i/></span>
     </button>
