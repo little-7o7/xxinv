@@ -1,0 +1,5 @@
+/* Italic letter style, as in the approved screenshot. */
+main[data-theme]{--copy-leading:1.45}
+main[data-theme] :is(.letter .letter-body,.extended-letter p,.extended-letter p:first-child,.section-heading>p:not(.eyebrow),.guest-wishes>p:not(.signature),.faq-list details p,.faq-list summary,.guest-farewell,.signature,.venue-meeting p,.venue-meeting>span,.venue-bottom p,.countdown-note,.tagline),
+main[data-theme] :is(.letter h2,.section-heading h2,.venue-heading h2,.person-card h3,.guest-wishes h3,.guest-faq h2,footer h2){font-style:italic}
+main[data-theme] .letter h2{font-size:clamp(36px,4vw,44px);line-height:1.3;color:var(--gold)}
