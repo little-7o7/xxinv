@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Camera, Building2, ArrowUpRight } from 'lucide-react';
+import { Camera, Building2, ArrowUpRight, CalendarDays } from 'lucide-react';
 import { type Celebrant, type Language } from '../lib/invitations';
 import { restaurant } from '../lib/restaurant';
 
@@ -23,7 +23,7 @@ export default function PhotoSections({language, celebrant}:{language:Language;c
           {photo.src?<Image src={photo.src} alt={photo.label[language]} fill sizes="(max-width: 650px) 90vw, 1040px"/>:<div className="venue-empty"><Building2 size={index===0?48:32} strokeWidth={.7}/><span>{ru?'Место для фотографии':'Ҷой барои акс'}</span></div>}
         </figure>)}
       </div>
-      <div className="venue-bottom"><p>{ru?'Ждём вас в ресторане «Самарканд».':'Шуморо дар тарабхонаи «Самарқанд» интизорем.'}</p><a href={restaurant.mapUrl} target="_blank" rel="noreferrer">{ru?'Найти на карте':'Дар харита ёфтан'}<ArrowUpRight size={18}/></a></div>
+      <div id="details" className="venue-meeting"><CalendarDays size={25} strokeWidth={1}/><p>{ru?'4 ноября 2026 · 18:00':'4 ноябри 2026 · 18:00'}</p><span>{ru?'Самарканд':'Самарқанд'}</span></div><div className="venue-bottom"><a href={restaurant.mapUrl} target="_blank" rel="noreferrer">{ru?'Найти на карте':'Дар харита ёфтан'}<ArrowUpRight size={18}/></a></div>
     </section>
     <section id="information" className="information-section section-shell" data-reveal>
       <p className="eyebrow">{ru?'ДО ВСТРЕЧИ НА ПРАЗДНИКЕ':'ТО ДИДОР ДАР ҶАШН'}</p>

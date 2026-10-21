@@ -88,3 +88,5 @@ main[data-theme]{--ink:#f5e9d5;--gold:#e4be7d;--metallic-gold:linear-gradient(12
 .extended-letter p,.extended-letter p:first-child{font-size:clamp(24px,2.5vw,28px);margin-bottom:17px}.letter .letter-body{line-height:1.35}.letter h2{margin-bottom:22px}
 .venue-heading{display:block;text-align:center}.venue-heading .eyebrow{text-align:center}.venue-heading h2{max-width:none;margin:18px auto 0}.portrait-single figcaption{justify-content:center;text-align:center}.guest-faq h2{font-size:clamp(30px,3.5vw,45px)}
 @media(max-width:650px){.hero h1.hero-invite{font-size:9px;letter-spacing:2px}.extended-letter p,.extended-letter p:first-child{font-size:24px;line-height:1.35}}
+
+.venue-meeting{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin:32px 0 22px;text-align:center;scroll-margin-top:90px}.venue-meeting svg{color:var(--gold)}.venue-meeting p{font-size:19px;margin:0}.venue-meeting span{width:100%;color:var(--muted);font-size:14px}.venue-bottom{justify-content:center;align-items:center}

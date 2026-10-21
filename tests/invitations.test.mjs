@@ -62,3 +62,18 @@ test('old Uzbek links redirect to Tajik with the same guest', () => {
   assert.equal(invitationRedirect(['uz','shavkat']), '/tj/shavkat');
   assert.equal(parseInvitation(['uz','shavkat']), null);
 });
+
+test('salutations support men, women and families and survive language switching', async () => {
+  const {guestGreeting}=await import('../lib/invitations.ts');
+  for (const [suffix,name,expected] of [['goy','амир','Дорогой Амир!'],['gaya','малика','Дорогая Малика!'],['giye','насреддиновы','Дорогие Насреддиновы!']]) {
+    const parsed=parseInvitation(['ru','shuhrat',suffix,name]);
+    assert.equal(guestGreeting('ru',parsed.guest,parsed.salutation),expected);
+    const path=invitationPath('tj','shuhrat',parsed.guest,parsed.salutation);
+    assert.equal(parseInvitation(path.split('/').slice(1).map(decodeURIComponent)).salutation,suffix);
+    assert.equal(invitationRedirect(['shuhrat',suffix,name]),invitationPath('ru','shuhrat',name,suffix));
+  }
+  assert.equal(guestGreeting('ru','','giye'),'Дорогие гости!');
+  assert.equal(guestGreeting('ru','','gaya'),'Дорогая гостья!');
+  assert.equal(guestGreeting('ru',''),'Дорогой гость!');
+  assert.equal(parseInvitation(['ru','shuhrat','invalid','name']),null);
+});
